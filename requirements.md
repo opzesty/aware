@@ -4,21 +4,18 @@ Aware – MVP Requirements Document
 Overview
 --------
 
-Aware is an application designed to help users gain awareness of how they spend their time. It is composed of a neutral, bias-free backend and a variety of potentially opinionated frontends tailored to specific use cases (e.g., weight loss, time tracking for freelancers).
-    [Purpose](#Purpose)
-    [Key Requirements](#Key Requirements)
-        * [Backend (Core System)](#Event Tracking)
+Aware is an application designed to help users gain awareness of how they spend their time. It is composed of a neutral, bias-free backend and a variety of potentially opinionated frontends tailored to specific use cases (e.g., weight loss, time tracking for freelancers).  Ultimately, aware is intended to help users reflect on how they actually spent their day, promote awareness, and provide a minimal intervention structure.
+
+    *  [Key Requirements](#Key Requirements)
+        * [Backend (Core System)](#Backend)
         * [Front End](#Front End)
 
 A neutral data store and API responsible for recording and storing actual day-to-day activities without judgment or prescriptive goals.
 
-Purpose
-------
+Key Requirements
+----------------
 
-To help users reflect on how they actually spent their day, promote awareness, and provide a minimal intervention structure.
-
-### Key Requirements
-
+### Backend
 #### Event Tracking
     1. Record the start of an event/task
     2. Automatically calculate duration from the current task’s start to the next task’s start
