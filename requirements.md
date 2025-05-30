@@ -16,11 +16,19 @@ Key Requirements
 
 ### Backend
 #### Event Tracking
-1. Record the start of an event/task
+1. Record the start of an event or activity
 2. Automatically calculate duration from the current task’s start to the next task’s start
 3. Store raw start and end timestamps
 
-#### Activity Model
+
+#### Event
+Support predefined event types:
+1. Type
+2. Start Epoch
+3. Measurement
+4. Label
+
+#### Activity
 Support predefined activity types:
 1. Nourishment (prep, eating)
 2. Exercise
@@ -46,6 +54,8 @@ Support predefined activity types:
 * Clean Bathroom
 * Make Bed
 * Clean Bedroom
+
+Notes are happening too. They go to Events and Activities optionally.
 
 Allow 1:M relationship between activity instances and types (multi-type tagging)
 

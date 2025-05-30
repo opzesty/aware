@@ -9,8 +9,8 @@ TablePartial id {
 }
 
 TablePartial time_bounds {
-    start integer [note: "Unix epoch in UTC"]
-    stop integer [note: "Unix epoch in UTC"]
+    start int [note: "Unix epoch in UTC"]
+    stop int [note: "Unix epoch in UTC"]
 }
 
 TablePartial name_info {
@@ -30,8 +30,8 @@ Table aware.activity_types {
 }
 
 Table aware.activity_types_labels {
-    activity_type_id integer [ref: > aware.activity_types.id]
-    label_id integer [ref: > aware.labels.id]
+    activity_type_id int [ref: > aware.activity_types.id]
+    label_id int [ref: > aware.labels.id]
     indexes {
         (activity_type_id, label_id) [pk]
     }
@@ -40,5 +40,25 @@ Table aware.activity_types_labels {
 Table aware.activities {
     ~id
     ~time_bounds
-    activity_type_id integer [ref: > aware.activity_types.id]
+    activity_type_id int [ref: > aware.activity_types.id]
+}
+
+Table aware.event_types {
+    ~id
+    ~name_info
+    ~time_bounds
+}
+
+Table aware.event_types_labels {
+    event_type_id int [ref: > aware.event_types.id]
+    label_id int [ref: > aware.labels.id]
+    indexes {
+        (event_type_id, label_id) [pk]
+    }
+}
+
+Table aware.events {
+    ~id
+    start int [note: "Unix epoch in UTC"]
+    event_type_id int [ref: > aware.event_types.id]
 }
