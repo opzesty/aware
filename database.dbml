@@ -1,0 +1,23 @@
+Project aware {
+    database_type: 'PostgreSQL'
+    Note: 'Aware is an application designed to help users gain awareness of how they spend their time.'
+
+}
+
+TablePartial time_bounds {
+    start integer [note: "Unix epoch in UTC"]
+    stop integer [note: "Unix epoch in UTC"]
+}
+
+Table aware.activity_type {
+    id integer [primary key]
+    name varchar
+    description varchar
+    ~time_bounds
+}
+
+Table aware.activity {
+    id integer [primary key]
+    ~time_bounds
+    activity_type_id integer [ref: > aware.activity_type.id]
+}
