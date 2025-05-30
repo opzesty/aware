@@ -4,20 +4,41 @@ Project aware {
 
 }
 
+TablePartial id {
+    id int [primary key]
+}
+
 TablePartial time_bounds {
     start integer [note: "Unix epoch in UTC"]
     stop integer [note: "Unix epoch in UTC"]
 }
 
-Table aware.activity_type {
-    id integer [primary key]
+TablePartial name_info {
     name varchar
     description varchar
+}
+
+Table aware.labels {
+    ~id
+    ~name_info
+}
+
+Table aware.activity_types {
+    ~id
+    ~name_info
     ~time_bounds
 }
 
-Table aware.activity {
-    id integer [primary key]
+Table aware.activity_types_labels {
+    activity_type_id integer [ref: > aware.activity_types.id]
+    label_id integer [ref: > aware.labels.id]
+    indexes {
+        (activity_type_id, label_id) [pk]
+    }
+}
+
+Table aware.activities {
+    ~id
     ~time_bounds
-    activity_type_id integer [ref: > aware.activity_type.id]
+    activity_type_id integer [ref: > aware.activity_types.id]
 }

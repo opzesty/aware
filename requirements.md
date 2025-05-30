@@ -24,6 +24,10 @@ Key Requirements
 Support predefined activity types:
 1. Nourishment (prep, eating)
 2. Exercise
+* Run
+* Lift Weights
+* Swim
+* Walk
 3. Work
 * Self-Improvement
 * Projects (e.g., coding, database work)
@@ -32,9 +36,16 @@ Support predefined activity types:
 * Billable Hours
 4. Bodily Functions
 5. Hygiene
+* Bathe
+* Brush Teeth
+* Cut Hair
 6. Mental Relaxation
 7. Non-tracked Time
 8. Housework
+* Laundry
+* Clean Bathroom
+* Make Bed
+* Clean Bedroom
 
 Allow 1:M relationship between activity instances and types (multi-type tagging)
 
