@@ -6,9 +6,9 @@ Overview
 
 Aware is an application designed to help users gain awareness of how they spend their time. It is composed of a neutral, bias-free backend and a variety of potentially opinionated frontends tailored to specific use cases (e.g., weight loss, time tracking for freelancers).  Ultimately, aware is intended to help users reflect on how they actually spent their day, promote awareness, and provide a minimal intervention structure.  A neutral data store and API responsible for recording and storing actual day-to-day activities without judgment or prescriptive goals.
 
-*  [Key Requirements](#Key Requirements)
+*  [Key Requirements](#Key-Requirements)
 * [Backend (Core System)](#Backend)
-* [Front End](#Front End)
+* [Front End](#FrontEnd)
 
 
 Key Requirements
