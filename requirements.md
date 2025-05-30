@@ -1,26 +1,67 @@
-1.	Able to record the start of an event/task
-2.	Activity should calculate length of activity from start time to next task start time
-3.	Activity Types
-a.	Nourishment – prep, eating
-b.	Exercise
-c.	Work
-i.	Self-Improvement – building your own skills, 
-ii.	Project – coding DB
-iii.	Professional development
-iv.	Billable Hours
-d.	Bodily functions
-e.	Hygiene
-f.	Mental relaxation
-g.	Non-tracked activities
-h.	Laundry
-4.	Activities can be split into 1:M types
-5.	Contracts billable to (out of scope for MVP)
-6.	App is meant to give more awareness of how you are spending your day
-7.	Reporting features
-8.	Upon completion, present me with options for next activity
-9.	Ability to prioritize activities
-10.	Report on time spent in app (starting and stopping tasks, planning tasks, reviewing tasks)
-11.	Ability to plan tasks for the day
-12.	Ability to plan task limitations
-13.	Incentivized to follow your plan
-14.	App drives you to reflect on your day, as opposed to driving your day
+Aware – MVP Requirements Document
+============================
+
+Overview
+--------
+
+Aware is an application designed to help users gain awareness of how they spend their time. It is composed of a neutral, bias-free backend and a variety of potentially opinionated frontends tailored to specific use cases (e.g., weight loss, time tracking for freelancers).
+    [Purpose](#Purpose)
+    [Key Requirements](#Key Requirements)
+        * [Backend (Core System)](#Event Tracking)
+        * [Front End](#Front End)
+
+A neutral data store and API responsible for recording and storing actual day-to-day activities without judgment or prescriptive goals.
+
+Purpose
+------
+
+To help users reflect on how they actually spent their day, promote awareness, and provide a minimal intervention structure.
+
+### Key Requirements
+
+#### Event Tracking
+    1. Record the start of an event/task
+    2. Automatically calculate duration from the current task’s start to the next task’s start
+    3. Store raw start and end timestamps
+
+#### Activity Model
+Support predefined activity types:
+    1. Nourishment (prep, eating)
+    2. Exercise
+    3. Work
+        * Self-Improvement
+        * Projects (e.g., coding, database work)
+            User defined
+        * Professional Development
+        * Billable Hours
+    4. Bodily Functions
+    5. Hygiene
+    6. Mental Relaxation
+    7. Non-tracked Time
+    8. Housework
+
+Allow 1:M relationship between activity instances and types (multi-type tagging)
+
+#### Data Integrity & Neutrality
+
+    * Backend makes no assumptions or judgments about activities
+    * Store metadata needed for rich reporting but defer interpretation to the frontend
+
+### Frontend
+
+#### Input
+    * MVP frontend allows user to record end of activity
+    * Select type for recorded activity.
+
+#### Reporting
+    * Produce structured text output in the form of:
+    ```strftime('%R%t%d %B %Y%t') + "activity_type=.*;" + tab + "duration=strftime('%T');"```
+
+Future Frontend Concepts
+------------------------
+* Freelancer Time Tracker
+    * Emphasizes billable hours and contract tagging
+* Health Tracker
+    * Focused on nourishment, exercise, and hygiene with goals and analytics
+* Professional Growth Tracker
+    *Highlights self-improvement and skill development over time
