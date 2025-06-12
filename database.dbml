@@ -13,6 +13,11 @@ TablePartial time_bounds {
     stop int [note: "Unix epoch in UTC"]
 }
 
+TablePartial audit_trail {
+    created int [note: "Unix epoch in UTC"]
+    modified int [note: "Unix epoch in UTC"]
+}
+
 TablePartial name_info {
     name varchar
     description varchar
@@ -43,22 +48,51 @@ Table aware.activities {
     activity_type_id int [ref: > aware.activity_types.id]
 }
 
-Table aware.event_types {
+Table aware.measurement_types {
     ~id
     ~name_info
     ~time_bounds
 }
 
-Table aware.event_types_labels {
-    event_type_id int [ref: > aware.event_types.id]
+Table aware.measurement_types_labels {
+    measurement_type_id int [ref: > aware.measurement_types.id]
     label_id int [ref: > aware.labels.id]
     indexes {
-        (event_type_id, label_id) [pk]
+        (measurement_type_id, label_id) [pk]
     }
 }
 
-Table aware.events {
+Table aware.measurements {
     ~id
     start int [note: "Unix epoch in UTC"]
-    event_type_id int [ref: > aware.event_types.id]
+    measurement_type_id int [ref: > aware.measurement_types.id]
+}
+
+Table aware.measurement_templates {
+    ~id
+    ~name_info
+    ~time_bounds
+}
+
+Table aware.measurement_template_components {
+    measurement_template_id int [ref: > aware.measurement_templates.id]
+    measurement_component_id int [ref: > aware.measurement_components.id]
+    required_ind bool    
+    indexes {
+      (measurement_template_id, measurement_component_id) [pk]
+    }
+}
+
+Table aware.measurement_components {
+    ~id
+    ~name_info
+    ~time_bounds
+}
+
+Table aware.measurement_component_values {
+    ~id
+    measurement_id int [ref: > aware.measurements.id]
+    measurement_template_id int [ref: > aware.measurement_template_components.measurement_template_id]
+    measurement_component_id int [ref: > aware.measurement_template_components.measurement_component_id]
+    value_obj varchar2
 }
